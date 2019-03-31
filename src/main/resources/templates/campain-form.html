@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campain Form</title>
+</head>
+<body>
+<form th:action="@{/campain}" method="post" th:object="${campain}">
+    <table>
+        <tr>
+            <td>
+                Imie:
+            </td>
+            <td>
+                <input type="text" th:field="${customer.firstName}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nazwisko:
+            </td>
+            <td>
+                <input type="text" th:field="${customer.lastName}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Company:
+            </td>
+            <td>
+                <input type="text" th:field="${customer.company}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Register">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
