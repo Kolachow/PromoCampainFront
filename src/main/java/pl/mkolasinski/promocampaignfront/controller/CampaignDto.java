@@ -1,13 +1,17 @@
 package pl.mkolasinski.promocampaignfront.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
-public class CampainDto {
+public class CampaignDto {
 
     private String title;
     private String brand;
     private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
     private int employeeId;
 
@@ -61,7 +65,7 @@ public class CampainDto {
 
     @Override
     public String toString() {
-        return "CampainDto{" +
+        return "CampaignDto{" +
                 "title='" + title + '\'' +
                 ", brand='" + brand + '\'' +
                 ", description='" + description + '\'' +

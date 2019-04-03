@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Campain Form</title>
+</head>
+<body>
+<form th:action="@{/campaigns}" method="post" th:object="${campaign}">
+    <table>
+        <tr>
+            <td>
+                Tytuł:
+            </td>
+            <td>
+                <input type="text" th:field="${campaign.title}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Firma:
+            </td>
+            <td>
+                <input type="text" th:field="${campaign.brand}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Opis:
+            </td>
+            <td>
+                <input type="text" th:field="${campaign.description}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Początek kampanii:
+            </td>
+            <td>
+                <input type="date" th:field="${campaign.startDate}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Koniec kampanii:
+            </td>
+            <td>
+                <input type="date" th:field="${campaign.endDate}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Numer pracownika:
+            </td>
+            <td>
+                <input type="text" th:field="${campaign.employeeId}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Register">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
