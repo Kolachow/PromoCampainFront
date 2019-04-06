@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td {
+            min-width: 120px;
+        }
+        .title {
+            text-decoration: underline;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <td class="title">Title: </td>
+            <td class="title">Description</td>
+            <td class="title">Brand:</td>
+            <td class="title">Start Date:</td>
+            <td class="title">End Date:</td>
+            <td class="title">Employee ID:</td>
+        </tr>
+        <tr th:each="campaign : ${campaigns}">
+            <td th:text="${campaign.title}"></td>
+            <td th:text="${campaign.description}"></td>
+            <td th:text="${campaign.brand}"></td>
+            <td th:text="${campaign.startDate}"></td>
+            <td th:text="${campaign.endDate}"></td>
+            <td th:text="${campaign.employeeId}"></td>
+        </tr>
+    </table>
+</body>
+</html>

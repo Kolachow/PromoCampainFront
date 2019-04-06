@@ -1,4 +1,4 @@
-package pl.mkolasinski.promocampaignfront.controller;
+package pl.mkolasinski.promocampaignfront.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

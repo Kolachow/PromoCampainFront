@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import pl.mkolasinski.promocampaignfront.model.CustomerDto;
 
 @RestController
 public class CustomerController {
@@ -27,7 +28,5 @@ public class CustomerController {
             return new ModelAndView("register-form")
                     .addObject("customer", customer);
         }
-
-
     }
 }
