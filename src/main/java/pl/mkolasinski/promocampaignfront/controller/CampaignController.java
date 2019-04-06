@@ -25,8 +25,8 @@ public class CampaignController {
     @PostMapping("/campaigns")
     public ModelAndView register(@ModelAttribute CampaignDto campaign) {
         RestTemplate template = new RestTemplate();
-        ResponseEntity<CampaignDto> response = template.postForEntity(config.getBaseUrl()+"/campaigns", campaign, CampaignDto.class);
-        if(response.getStatusCode().is2xxSuccessful()) {
+        ResponseEntity<CampaignDto> response = template.postForEntity(config.getBaseUrl() + "/campaigns", campaign, CampaignDto.class);
+        if (response.getStatusCode().is2xxSuccessful()) {
             return new ModelAndView("register-success");
         } else {
             return new ModelAndView("campaign-form")
@@ -38,7 +38,7 @@ public class CampaignController {
     public ModelAndView allCampaigns() {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl()+"/campaigns", List.class);
+        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl() + "/campaigns", List.class);
         return new ModelAndView("campaigns-list")
                 .addObject("campaigns", result.getBody());
     }
@@ -47,7 +47,7 @@ public class CampaignController {
     public ModelAndView brandCampaigns(@PathVariable String brand) {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl()+"/campaigns/current/".concat(brand), List.class);
+        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl() + "/campaigns/current/".concat(brand), List.class);
         return new ModelAndView("campaigns-list")
                 .addObject("campaigns", result.getBody());
     }
@@ -56,7 +56,7 @@ public class CampaignController {
     public ModelAndView endedCampaigns(@PathVariable String brand) {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl()+"/campaigns/ended/".concat(brand), List.class);
+        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl() + "/campaigns/ended/".concat(brand), List.class);
         return new ModelAndView("campaigns-list")
                 .addObject("campaigns", result.getBody());
     }
@@ -65,7 +65,7 @@ public class CampaignController {
     public ModelAndView futureCampaigns(@PathVariable String brand) {
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl()+"/campaigns/future/".concat(brand), List.class);
+        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl() + "/campaigns/future/".concat(brand), List.class);
         return new ModelAndView("campaigns-list")
                 .addObject("campaigns", result.getBody());
     }

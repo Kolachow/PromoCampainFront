@@ -5,6 +5,8 @@ public class CustomerDto {
     private String firstName;
     private String lastName;
     private String company;
+    private String email;
+    private String password;
 
     public String getFirstName() {
         return firstName;
@@ -30,12 +32,29 @@ public class CustomerDto {
         this.company = company;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "CustomerDto{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", company='" + company + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
