@@ -1,5 +1,7 @@
 package pl.mkolasinski.promocampaignfront.model;
 
+import java.util.Set;
+
 public class CustomerDto {
 
     private String firstName;
@@ -8,6 +10,7 @@ public class CustomerDto {
     private String email;
     private String password;
     private Integer id;
+    private Set<Role> roles;
 
     public String getFirstName() {
         return firstName;
@@ -55,6 +58,14 @@ public class CustomerDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override

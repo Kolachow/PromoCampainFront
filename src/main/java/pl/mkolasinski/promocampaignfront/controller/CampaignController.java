@@ -55,30 +55,51 @@ public class CampaignController {
                 .addObject("campaigns", result.getBody());
     }
 
-    @GetMapping("/campaigns/{brand}")
-    public ModelAndView brandCampaigns(@PathVariable String brand) {
+    @GetMapping("/campaigns/all/my")
+    public ModelAndView customerCampaigns() {
         RestTemplate restTemplate = new RestTemplate();
+        String brand = getBrand(restTemplate);
+
+        ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl()+"/campaigns/all/".concat(brand), List.class);
+        return new ModelAndView("my-campaigns")
+                .addObject("campaigns", result.getBody());
+    }
+
+    @GetMapping("/campaigns/current")
+    public ModelAndView brandCampaigns() {
+        RestTemplate restTemplate = new RestTemplate();
+        String brand = getBrand(restTemplate);
 
         ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl() + "/campaigns/current/".concat(brand), List.class);
         return new ModelAndView("campaigns-list")
                 .addObject("campaigns", result.getBody());
     }
 
-    @GetMapping("/campaigns/ended/{brand}")
-    public ModelAndView endedCampaigns(@PathVariable String brand) {
+    @GetMapping("/campaigns/ended")
+    public ModelAndView endedCampaigns() {
         RestTemplate restTemplate = new RestTemplate();
+        String brand = getBrand(restTemplate);
 
         ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl() + "/campaigns/ended/".concat(brand), List.class);
         return new ModelAndView("campaigns-list")
                 .addObject("campaigns", result.getBody());
     }
 
-    @GetMapping("/campaigns/future/{brand}")
-    public ModelAndView futureCampaigns(@PathVariable String brand) {
+
+    @GetMapping("/campaigns/future")
+    public ModelAndView futureCampaigns() {
         RestTemplate restTemplate = new RestTemplate();
+        String brand = getBrand(restTemplate);
 
         ResponseEntity<List> result = restTemplate.getForEntity(config.getBaseUrl() + "/campaigns/future/".concat(brand), List.class);
         return new ModelAndView("campaigns-list")
                 .addObject("campaigns", result.getBody());
+    }
+
+    private String getBrand(RestTemplate restTemplate) {
+        User customer = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String customerEmail = customer.getUsername();
+        ResponseEntity<CustomerDto> customerResponse = restTemplate.getForEntity(config.getBaseUrl() + "/customers/" + customerEmail, CustomerDto.class);
+        return Objects.requireNonNull(customerResponse.getBody()).getCompany();
     }
 }
