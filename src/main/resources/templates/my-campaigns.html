@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,6 +18,12 @@
 <form th:action="@{/logout}" method="POST">
     <input type="submit" value="Logout"/>
 </form>
+<div sec:authorize="hasRole('ADMIN')" class="login">
+    Zalogowano jako: <td th:text="${userEmail}"></td>
+</div>
+<div sec:authorize="hasRole('USER')">
+    Zalogowano jako: <td th:text="${userEmail}"></td>
+</div>
 <table border="2">
     <tr>
         <td class="title">Title: </td>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Register Form</title>
@@ -11,6 +11,9 @@
     </style>
 </head>
 <body>
+<div sec:authorize="isAuthenticated()">
+    <meta http-equiv="refresh" content="0; URL=http://localhost:8081">
+</div>
 <form th:action="@{/customers}" method="post" th:object="${customer}">
     <table>
         <tr>
