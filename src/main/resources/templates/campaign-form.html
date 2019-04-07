@@ -5,6 +5,9 @@
     <title>Campain Form</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
 <form th:action="@{/campaigns}" method="post" th:object="${campaign}">
     <table>
         <tr>

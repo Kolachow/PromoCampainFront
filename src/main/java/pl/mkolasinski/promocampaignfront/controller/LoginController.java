@@ -11,4 +11,9 @@ public class LoginController {
     public ModelAndView loginPage() {
         return new ModelAndView("login");
     }
+
+    @GetMapping("/logout")
+    public ModelAndView logoutPage() {
+        return new ModelAndView("logout");
+    }
 }

@@ -15,7 +15,10 @@
     </style>
 </head>
 <body>
-    <table border="2">
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
+<table border="2">
         <tr>
             <td class="title">Title: </td>
             <td class="title">Description</td>

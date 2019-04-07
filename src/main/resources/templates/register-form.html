@@ -11,6 +11,9 @@
     </style>
 </head>
 <body>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
 <form th:action="@{/customers}" method="post" th:object="${customer}">
     <table>
         <tr>

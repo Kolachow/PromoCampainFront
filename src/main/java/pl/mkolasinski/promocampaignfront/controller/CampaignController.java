@@ -33,7 +33,7 @@ public class CampaignController {
 
         User customer = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String customerEmail = customer.getUsername();
-        ResponseEntity<CustomerDto> customerResponse = template.getForEntity(config.getBaseUrl()+"/customers/"+customerEmail, CustomerDto.class);
+        ResponseEntity<CustomerDto> customerResponse = template.getForEntity(config.getBaseUrl() + "/customers/" + customerEmail, CustomerDto.class);
         campaign.setEmployeeId(Objects.requireNonNull(customerResponse.getBody()).getId());
         campaign.setBrand(customerResponse.getBody().getCompany());
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>2
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,9 @@
     </style>
 </head>
 <body>
-    <p class="invoke">Abra kadabra łupu cupu tup!</p>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
+<p class="invoke">Abra kadabra łupu cupu tup!</p>
 </body>
 </html>
