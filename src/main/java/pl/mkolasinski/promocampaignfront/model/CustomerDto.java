@@ -7,6 +7,7 @@ public class CustomerDto {
     private String company;
     private String email;
     private String password;
+    private Integer id;
 
     public String getFirstName() {
         return firstName;
@@ -46,6 +47,14 @@ public class CustomerDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override

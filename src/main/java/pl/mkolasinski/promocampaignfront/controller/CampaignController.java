@@ -2,13 +2,18 @@ package pl.mkolasinski.promocampaignfront.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import pl.mkolasinski.promocampaignfront.config.Config;
 import pl.mkolasinski.promocampaignfront.model.CampaignDto;
+import pl.mkolasinski.promocampaignfront.model.CustomerDto;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class CampaignController {
@@ -25,6 +30,13 @@ public class CampaignController {
     @PostMapping("/campaigns")
     public ModelAndView register(@ModelAttribute CampaignDto campaign) {
         RestTemplate template = new RestTemplate();
+
+        User customer = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String customerEmail = customer.getUsername();
+        ResponseEntity<CustomerDto> customerResponse = template.getForEntity(config.getBaseUrl()+"/customers/"+customerEmail, CustomerDto.class);
+        campaign.setEmployeeId(Objects.requireNonNull(customerResponse.getBody()).getId());
+        campaign.setBrand(customerResponse.getBody().getCompany());
+
         ResponseEntity<CampaignDto> response = template.postForEntity(config.getBaseUrl() + "/campaigns", campaign, CampaignDto.class);
         if (response.getStatusCode().is2xxSuccessful()) {
             return new ModelAndView("register-success");
